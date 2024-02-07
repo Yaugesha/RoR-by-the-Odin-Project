@@ -12,6 +12,7 @@ end
 
 def stock_picker arr
   results = {bought_for: 0, sold_for: 0}
+  profit = 0
   arr.each_with_index do |wasted, index|
     earned = 0
     profit = arr.slice(index, arr.length-1).reduce(0) do |profit, price|
@@ -21,12 +22,12 @@ def stock_picker arr
       end
       profit
     end
-    if count_diff results < profit
+    if count_diff(results) < profit
         results[:bought_for] = wasted
         results[:sold_for] = earned
     end
   end
-  puts "#{best_profit} = #{sold} - #{bought}"
+  puts "#{count_diff(results)} = #{results[:sold_for]} - #{results[:bought_for]}"
 end
 
 stock_picker([17,3,6,9,15,8,6,1,10])
