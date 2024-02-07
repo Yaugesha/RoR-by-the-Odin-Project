@@ -1,0 +1,1 @@
+begin...resque block http://ruby.bastardsbook.com/chapters/exception-handling/#h-2-2
