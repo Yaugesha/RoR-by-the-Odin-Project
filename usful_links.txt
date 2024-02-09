@@ -1,1 +1,11 @@
+enumerable https://www.rubyguides.com/2018/10/any-all-none-one/
+           https://www.rubyguides.com/2018/10/ruby-map-method/
+
 begin...resque block http://ruby.bastardsbook.com/chapters/exception-handling/#h-2-2
+
+IO stream https://thoughtbot.com/blog/io-in-ruby
+          https://zetcode.com/lang/rubytutorial/io/
+          
+to destroy brain https://www.theodinproject.com/lessons/ruby-pattern-matching
+
+shortly about blocks/procs https://www.rubyguides.com/2016/02/ruby-procs-and-lambdas/
