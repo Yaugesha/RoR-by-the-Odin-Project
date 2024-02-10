@@ -21,6 +21,7 @@ include Output
         puts "game started"
         self.launch_game
       end
+      self.board_data = [[" ", " ", " "],[" ", " ", " "],[" ", " ", " "]]
     end
   end
 
