@@ -17,8 +17,10 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
+      flash[:success] = "Great! Your article has been created!"
       redirect_to @article
     else
+      flash.now[:error] = "Rats! Fix your mistakes, please."
       render :new, status: :unprocessable_entity
     end
   end
@@ -31,8 +33,10 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
+      flash[:success] = "Great! Your article has been updated!"
       redirect_to @article
     else
+      flash.new[:error] = "Sorry, you have some mistakes, fix them"
       render :new, status: :unprocessable_entity
     end
   end
@@ -43,6 +47,7 @@ class ArticlesController < ApplicationController
 
     redirect_to root_path, status: :see_other
   end
+
 
   private
 
