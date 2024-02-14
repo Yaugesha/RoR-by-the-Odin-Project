@@ -1,0 +1,16 @@
+<% flash.each do |type, msg| %>
+      <%= type %>
+  <% if (type == "success") %>
+    <div style="background-color:#8ebf42">
+      <%= msg %>
+    </div>
+  <% elsif (type == "error")%>
+    <div style="background-color: red">
+      <%= msg %>
+    </div>
+  <% else %>
+    <div >
+      <%= msg %>
+    </div>
+  <% end %>
+<% end %>  
