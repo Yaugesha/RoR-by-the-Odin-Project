@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :posts
   validates :login, length: {in: 4..20}
   validates :password, presence: true,
                        confirmation: true,
