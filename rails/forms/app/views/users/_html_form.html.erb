@@ -1,0 +1,32 @@
+<form method="post" action="/users" accept-charset="UTF-8">
+  <input name="authenticity_token" type="hidden" />
+  <div>
+    <label for="user[username]">username</label>
+    <input type="text" name="user[username]" />
+  </div>
+
+  <br/>
+
+  <div>
+    <label for="user[email]">email</label>
+    <input type="email" name="user[email]" />
+  </div>
+
+  <br/>
+
+  <div>
+    <label for="user[password]">password</label>
+    <input type="password" name="user[password]" />
+  </div>
+
+  <br/>
+
+  <div>
+    <label for="user[password_confirmation]">confirm password</label>
+    <input type="password" name="user[password_confirmation]" />
+  </div>
+
+  <br/>
+
+  <input type="submit" value="Submit">
+</form>
