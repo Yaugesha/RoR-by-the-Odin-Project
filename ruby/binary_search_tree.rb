@@ -27,12 +27,12 @@ class Tree
   def delete(value)
     deleted = @root.data == value ? @root : find_deleted_node(value, @root)
     replacement = find_replacement(deleted)
-    p replacement
-    deleted.data = replacement.data
+    deleted.data = replacement
     @root.data = deleted.data if @root.data == value
   end
 
   def pretty_print(node = @root, prefix = '', is_left = true)
+    return if node.data == nil
    pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
    puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
    pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
@@ -64,32 +64,28 @@ class Tree
   end
 
   def find_deleted_node(deleted, current)
-    if(current.data == deleted || current.data == deleted)
-      return current.data
+    if(current.data == deleted)
+      return current
     elsif current.data > deleted
       return if current.left == nil
-      find_parent_of_deleted(deleted, current.left)
+      find_deleted_node(deleted, current.left)
     else
       return if current.right == nil
-      find_parent_of_deleted(deleted, current.right)
+      find_deleted_node(deleted, current.right)
     end
   end
 
   def find_replacement(deleted)
-
     right_smallest = find_the_smallest_in_right_subtree(deleted.right)
     left_biggest = find_the_biggest_in_left_subtree(deleted.left)
 
     replacement = right_smallest != nil ? right_smallest : left_biggest
 
-    if right_smallest == replacement
-      p "here"
-      right_smallest = find_the_smallest_in_right_subtree(deleted.right)
-    else
-      left_biggest = find_the_biggest_in_left_subtree(right_smallest.left)
-    end
+    return replacement if replacement == nil
+    replacement_val = replacement.data
+    replacement.data = find_replacement(replacement)
 
-    replacement
+    replacement_val
   end
 
   def find_the_biggest_in_left_subtree(node)
@@ -117,5 +113,5 @@ tree.pretty_print
 tree.insert(6)
 tree.pretty_print
 
-tree.delete(8)
+tree.delete(3)
 tree.pretty_print
