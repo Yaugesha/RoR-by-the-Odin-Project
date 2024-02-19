@@ -9,3 +9,10 @@ IO stream https://thoughtbot.com/blog/io-in-ruby
 to destroy brain https://www.theodinproject.com/lessons/ruby-pattern-matching
 
 shortly about blocks/procs https://www.rubyguides.com/2016/02/ruby-procs-and-lambdas/
+
+
+how import maps works https://blog.appsignal.com/2022/03/02/import-maps-under-the-hood-in-rails-7.html 
+
+cookies and sessions https://www.youtube.com/watch?v=mqUbnZIY3OQ
+
+more info about AR queries https://www.theodinproject.com/lessons/ruby-on-rails-active-record-queries#additional-resources
