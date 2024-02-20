@@ -27,7 +27,7 @@ class Tree
   end
 
   def delete(value)
-    deleted = @root.data == value ? @root : find_deleted_node(value, @root)
+    deleted = @root.data == value ? @root : find_node(value, @root)
     replacement = find_replacement(deleted)
     deleted.data = replacement
     @root.data = deleted.data if @root.data == value
@@ -85,6 +85,27 @@ class Tree
     end
   end
 
+  def height(value)
+    node = find_node(value, @root)
+    return "Node not founded" if node == nil
+    find_height(node, 1)
+  end
+
+  #fix
+  def depth(value)
+    node = find_node(value, @root)
+    return "Node not founded" if node == nil
+    find_height(@root, 1) - find_height(node, 1)
+  end
+
+  def balanced?
+    return (find_height(@root.left, 1)-find_height(@root.right, 1)).abs <= 1
+  end
+
+  def rebalance
+    build_tree(self.preorder)
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     return if node.data == nil
    pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
@@ -117,15 +138,15 @@ class Tree
     end
   end
 
-  def find_deleted_node(deleted, current)
-    if(current.data == deleted)
+  def find_node(node, current)
+    if(current.data == node)
       return current
-    elsif current.data > deleted
+    elsif current.data > node
       return if current.left == nil
-      find_deleted_node(deleted, current.left)
+      find_node(node, current.left)
     else
       return if current.right == nil
-      find_deleted_node(deleted, current.right)
+      find_node(node, current.right)
     end
   end
 
@@ -167,7 +188,7 @@ class Tree
   def inorder_traverse(node, accamulator)
     unless node == nil
       inorder_traverse(node.left, accamulator)
-      accamulator << node.data
+      accamulator << node.data unless node.data == nil
       inorder_traverse(node.right, accamulator)
     end
     accamulator
@@ -175,7 +196,7 @@ class Tree
 
   def preorder_traverse(node, accamulator)
     unless node == nil
-      accamulator << node.data
+      accamulator << node.data unless node.data == nil
       preorder_traverse(node.left, accamulator)
       preorder_traverse(node.right, accamulator)
     end
@@ -185,10 +206,16 @@ class Tree
   def postorder_traverse(node, accamulator)
     unless node == nil
       postorder_traverse(node.right, accamulator)
-      accamulator << node.data
+      accamulator << node.data unless node.data == nil
       postorder_traverse(node.left, accamulator)
     end
     accamulator
+  end
+
+  def find_height(node, height)
+    left = node.left != nil ? find_height(node.left, height+1) : height
+    right = node.right != nil ? find_height(node.right, height+1) : height
+    return left > right ? left : right
   end
 
   def prepare_array(arr)
@@ -201,14 +228,26 @@ tree = Tree.new()
 tree.build_tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 tree.pretty_print
 
-# tree.insert(6)
-# tree.pretty_print
+tree.insert(10)
+tree.pretty_print
+p tree.balanced?
 
-# tree.delete(3)
-# tree.pretty_print
+tree.insert(11)
+tree.pretty_print
+p tree.balanced?
+
+tree.rebalance
+puts "rebalance"
+tree.pretty_print
+
+tree.delete(5)
+tree.pretty_print
 
 p tree.level_order { |item| item+1}
 
 p tree.inorder { |item| item+1}
 p tree.preorder { |item| item+1}
 p tree.postorder { |item| item+1}
+
+p tree.height(4)
+p tree.depth(4)
