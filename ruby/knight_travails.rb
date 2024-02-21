@@ -6,6 +6,25 @@ class Square
   def initialize(row, column)
     @row = row
     @column = column
+    @lt=nil
+    @tl=nil
+    @tr=nil
+    @rt=nil
+    @ld=nil
+    @dl=nil
+    @dr=nil
+    @rd=nil
+  end
+
+  def define_moves
+    @lt=Square.new(self.row-2, self.column+1)
+    @tl=Square.new(self.row-1, self.column+2)
+    @tr=Square.new(self.row+1, self.column+2)
+    @rt=Square.new(self.row+2, self.column+1)
+    @ld=Square.new(self.row-2, self.column-1)
+    @dl=Square.new(self.row-1, self.column-2)
+    @dr=Square.new(self.row+1, self.column-2)
+    @rd=Square.new(self.row+2, self.column-1)
   end
 end
 
@@ -23,18 +42,17 @@ class Knight
   end
 
   def find_finish(position, finish, moves, list)
-    flag = false
-    for row in -2..2
-      next unless (position.row+row).between?(0, 8)
-      for col in -2..2
-        p "#{row}, #{col}"
-          #find_finish(move(position, row, col), finish, moves+1)
-        next unless (position.column+col).between?(0, 8)
+    [-2, -1, 1, 2].each do |row|
+      if !(position.row+row).between?(0, 8)
+        next
+      end
+      [-2, -1, 1, 2].each do |col|
+        if !(position.column+col).between?(0, 8) || row.abs == col.abs
+          next
+        end
         moved_position = move(position, row, col)
         list.append(moved_position)
-        p moved_position
-        flag = [position.row, position.column] == finish
-        return moves if flag
+        return moves if [position.row, position.column] == finish
       end
     end
     next_pos = list.at(0)
