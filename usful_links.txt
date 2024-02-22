@@ -16,3 +16,5 @@ how import maps works https://blog.appsignal.com/2022/03/02/import-maps-under-th
 cookies and sessions https://www.youtube.com/watch?v=mqUbnZIY3OQ
 
 more info about AR queries https://www.theodinproject.com/lessons/ruby-on-rails-active-record-queries#additional-resources
+
+AR collbacks(also generally great thoughts about models) https://samuelmullen.com/articles/guidelines-for-using-activerecord-callbacks
