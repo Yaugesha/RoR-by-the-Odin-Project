@@ -1,4 +1,12 @@
-<%= form_with model: @flight do |f| %>
+<div>
+  <% flash.each do |type, msg| %>
+    <div>
+      <%= msg %>
+    </div>
+  <% end %>  
+</div>
+
+<%= form_with model: @flight, url: flights_path, method: :get do |f| %>
   <div>
     <%= label_tag :departure_airport, "Departure" %>
     <%= f.select(:departure_airport, @departure_options)%>
@@ -9,15 +17,21 @@
     <%= f.select(:arrival_airport, @arrival_options) %>
   </div>
   <br/>
-  <div>
-    <%= label_tag :arrival_airport, "Passengers" %>
-    <%= f.select(:passengers, (1..4)) %>
-  </div>
   <br/>
   <div>
     <%= label_tag :start_datetime, "Date" %>
     <%= f.select(:start_datetime, @start_datetimes) %>
   </div>
+  <br/>
+  <%= f.submit "Search" %>
 <% end %>
 
+
+<% if !@flights.empty? %>
+  <% for flight in @flights %>
+    <p>Arrival: <%= flight.arrival_airport.code %> - 
+    Departure: <%= flight.departure_airport.code %> 
+    Date: <%= Date.parse(flight.start_datetime).to_fs(:long) %></p>
+  <% end %>
+<% end %>
 
