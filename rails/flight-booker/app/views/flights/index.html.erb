@@ -1,0 +1,23 @@
+<%= form_with model: @flight do |f| %>
+  <div>
+    <%= label_tag :departure_airport, "Departure" %>
+    <%= f.select(:departure_airport, @departure_options)%>
+  </div>
+  <br/>
+  <div>
+    <%= label_tag :arrival_airport, "Arrival" %>
+    <%= f.select(:arrival_airport, @arrival_options) %>
+  </div>
+  <br/>
+  <div>
+    <%= label_tag :arrival_airport, "Passengers" %>
+    <%= f.select(:passengers, (1..4)) %>
+  </div>
+  <br/>
+  <div>
+    <%= label_tag :start_datetime, "Date" %>
+    <%= f.select(:start_datetime, @start_datetimes) %>
+  </div>
+<% end %>
+
+
