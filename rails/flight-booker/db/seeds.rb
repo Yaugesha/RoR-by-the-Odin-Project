@@ -30,3 +30,18 @@ end
     departure_airport: departure_airport
   )
 end
+
+6.times do
+  start_datetime = Faker::Time.between(from: DateTime.now, to: DateTime.now + 30)
+  duration = "#{rand(10..20)} hours #{rand(0..59)} minutes"
+
+  arrival_airport = Airport.find(2)
+  departure_airport = Airport.find(9)
+
+  Flight.create(
+    start_datetime: start_datetime,
+    duration: duration,
+    arrival_airport: arrival_airport,
+    departure_airport: departure_airport
+  )
+end
