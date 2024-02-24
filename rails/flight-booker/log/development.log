@@ -9968,3 +9968,2569 @@ Processing by BookingsController#new as HTML
 Completed 200 OK in 64ms (Views: 11.5ms | ActiveRecord: 1.0ms | Allocations: 6869)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePassengers (20240224151813)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "passengers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240224151813') RETURNING "version"[0m
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddPassengerRefToBooking (20240224152416)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "bookings" ADD "passenger_id" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_passenger_id" ON "bookings" ("passenger_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240224152416') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=&commit=Book+flight" for ::1 at 2024-02-24 18:31:56 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>""}, "commit"=>"Book flight"}
+[31mUnpermitted parameter: :id. Context: { controller: BookingsController, action: new, request: #<ActionDispatch::Request:0x00007fa3199797f8>, params: {"flight"=>{"id"=>"22", "number_of_passengers"=>""}, "commit"=>"Book flight", "controller"=>"bookings", "action"=>"new"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 185)
+  Rendered layout layouts/application.html.erb (Duration: 330.7ms | Allocations: 34263)
+Completed 200 OK in 1568ms (Views: 343.8ms | ActiveRecord: 5.1ms | Allocations: 334102)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=&commit=Book+flight" for ::1 at 2024-02-24 18:35:46 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>""}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (4.7ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:4
+  [1m[36mAirport Load (0.8ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  Rendered bookings/new.html.erb within layouts/application (Duration: 68.6ms | Allocations: 8519)
+  Rendered layout layouts/application.html.erb (Duration: 193.5ms | Allocations: 23103)
+Completed 200 OK in 479ms (Views: 195.6ms | ActiveRecord: 26.7ms | Allocations: 40155)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=&commit=Book+flight" for ::1 at 2024-02-24 18:36:03 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>""}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.8ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 58.8ms | Allocations: 6412)
+  Rendered layout layouts/application.html.erb (Duration: 227.5ms | Allocations: 20877)
+Completed 200 OK in 334ms (Views: 234.7ms | ActiveRecord: 19.8ms | Allocations: 31688)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=&commit=Book+flight" for ::1 at 2024-02-24 18:36:22 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>""}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.4ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 46.5ms | Allocations: 6410)
+  Rendered layout layouts/application.html.erb (Duration: 123.9ms | Allocations: 20943)
+Completed 200 OK in 275ms (Views: 132.5ms | ActiveRecord: 16.6ms | Allocations: 31704)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 18:37:01 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 9.7ms | Allocations: 1050)
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 2402)
+Completed 200 OK in 35ms (Views: 18.3ms | ActiveRecord: 0.6ms | Allocations: 3030)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 18:46:28 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms | Allocations: 1641)
+
+
+  
+ArgumentError (No association found for name `passengers'. Has it been defined yet?):
+  
+app/models/booking.rb:5:in `<class:Booking>'
+app/models/booking.rb:1:in `<main>'
+app/controllers/bookings_controller.rb:4:in `new'
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddPassengerRefToBooking (20240224152416)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TEMPORARY TABLE "abookings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "number_of_passengers" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "flight_id" integer DEFAULT NULL, "passenger_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_passenger_id" ON "abookings" ("passenger_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_abookings_on_flight_id" ON "abookings" ("flight_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[32mINSERT INTO "abookings" ("id","number_of_passengers","created_at","updated_at","flight_id","passenger_id")
+                     SELECT "id","number_of_passengers","created_at","updated_at","flight_id","passenger_id" FROM "bookings"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "bookings"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "number_of_passengers" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "flight_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_bookings_on_flight_id" ON "bookings" ("flight_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "bookings" ("id","number_of_passengers","created_at","updated_at","flight_id")
+                     SELECT "id","number_of_passengers","created_at","updated_at","flight_id" FROM "abookings"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "abookings"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20240224152416'[0m
+  [1m[36mTRANSACTION (33.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddBookingRefToPassenger (20240224154747)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "pasesngers" ADD "booking_id" integer[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddBookingRefToPassenger (20240224154747)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.9ms)[0m  [1m[35mALTER TABLE "passengers" ADD "booking_id" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_passengers_on_booking_id" ON "passengers" ("booking_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240224154747') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 18:51:56 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (1.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.6ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 128.0ms | Allocations: 10152)
+  Rendered layout layouts/application.html.erb (Duration: 129.0ms | Allocations: 10278)
+Completed 500 Internal Server Error in 2429ms (ActiveRecord: 48.2ms | Allocations: 320414)
+
+
+  
+ActionView::Template::Error (undefined method `bookings_path' for #<ActionView::Base:0x0000000000ab18>):
+     7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+     8: </p>
+     9: 
+    10:   <%= form_with model: @booking do |f| %>
+    11:     <% @number_of_passengers.times do %>
+    12:       <%= f.fields_for @booking.passnegers.build do |f| %>
+    13:         <div>
+  
+app/views/bookings/new.html.erb:10
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 18:52:48 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (3.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 129.4ms | Allocations: 7788)
+  Rendered layout layouts/application.html.erb (Duration: 135.5ms | Allocations: 7880)
+Completed 500 Internal Server Error in 328ms (ActiveRecord: 39.3ms | Allocations: 18472)
+
+
+  
+ActionView::Template::Error (undefined method `passnegers' for #<Booking id: nil, number_of_passengers: nil, created_at: nil, updated_at: nil, flight_id: nil>):
+     9: 
+    10:   <%= form_with model: @booking do |f| %>
+    11:     <% @number_of_passengers.times do %>
+    12:       <%= f.fields_for @booking.passnegers.build do |f| %>
+    13:         <div>
+    14:             <%= label_tag :username, "Username" %>
+    15:             <%= f.text_field :username %>
+  
+app/views/bookings/new.html.erb:12
+app/views/bookings/new.html.erb:11:in `times'
+app/views/bookings/new.html.erb:11
+app/views/bookings/new.html.erb:10
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 18:53:17 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (1.0ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.5ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 222.7ms | Allocations: 15565)
+  Rendered layout layouts/application.html.erb (Duration: 223.8ms | Allocations: 15657)
+Completed 500 Internal Server Error in 344ms (ActiveRecord: 29.8ms | Allocations: 26298)
+
+
+  
+ActionView::Template::Error (undefined method `username' for #<Passenger id: nil, email: nil, name: nil, created_at: nil, updated_at: nil, booking_id: nil>):
+    12:       <%= f.fields_for @booking.passengers.build do |f| %>
+    13:         <div>
+    14:             <%= label_tag :username, "Username" %>
+    15:             <%= f.text_field :username %>
+    16:         </div>
+    17:         <div>
+    18:             <%= label_tag :email, "Email" %>
+  
+app/views/bookings/new.html.erb:15
+app/views/bookings/new.html.erb:12
+app/views/bookings/new.html.erb:11:in `times'
+app/views/bookings/new.html.erb:11
+app/views/bookings/new.html.erb:10
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 18:53:47 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.9ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 174.7ms | Allocations: 12413)
+  Rendered layout layouts/application.html.erb (Duration: 176.8ms | Allocations: 12505)
+Completed 500 Internal Server Error in 336ms (ActiveRecord: 17.4ms | Allocations: 23094)
+
+
+  
+ActionView::Template::Error (undefined method `flight_id' for #<Passenger id: nil, email: nil, name: nil, created_at: nil, updated_at: nil, booking_id: nil>):
+    18:             <%= label_tag :email, "Email" %>
+    19:             <%= f.email_field :email %>
+    20:         </div>
+    21:         <%= f.hidden_field :flight_id, flight_id: @flight_id %>
+    22:       <% end %>
+    23:     <% end %>
+    24:     <%= f.submit %>
+  
+app/views/bookings/new.html.erb:21
+app/views/bookings/new.html.erb:12
+app/views/bookings/new.html.erb:11:in `times'
+app/views/bookings/new.html.erb:11
+app/views/bookings/new.html.erb:10
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 18:54:11 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.5ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.5ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 353.9ms | Allocations: 12422)
+  Rendered layout layouts/application.html.erb (Duration: 739.9ms | Allocations: 43535)
+Completed 200 OK in 816ms (Views: 740.5ms | ActiveRecord: 10.6ms | Allocations: 54247)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 18:55:27 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.7ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (2.5ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 139.2ms | Allocations: 12041)
+  Rendered layout layouts/application.html.erb (Duration: 276.7ms | Allocations: 26368)
+Completed 200 OK in 415ms (Views: 295.8ms | ActiveRecord: 16.6ms | Allocations: 36972)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 18:55:50 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.6ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.7ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 97.2ms | Allocations: 12035)
+  Rendered layout layouts/application.html.erb (Duration: 165.3ms | Allocations: 26362)
+Completed 200 OK in 286ms (Views: 174.8ms | ActiveRecord: 12.5ms | Allocations: 37015)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 18:56:03 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.5ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 177.3ms | Allocations: 12024)
+  Rendered layout layouts/application.html.erb (Duration: 229.7ms | Allocations: 26352)
+Completed 200 OK in 445ms (Views: 233.2ms | ActiveRecord: 62.6ms | Allocations: 36899)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 19:01:09 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"z", "email"=>"zx@cv"}, "flight_id"=>""}, "commit"=>"Create Booking"}
+No template found for BookingsController#create, rendering head :no_content
+Completed 204 No Content in 37ms (ActiveRecord: 15.7ms | Allocations: 4893)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 19:04:54 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"z", "email"=>"zx@cv"}, "flight_id"=>""}, "commit"=>"Create Booking"}
+No template found for BookingsController#create, rendering head :no_content
+Completed 204 No Content in 38ms (ActiveRecord: 11.9ms | Allocations: 4882)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 19:07:11 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"z", "email"=>"zx@cv"}, "flight_id"=>""}, "commit"=>"Create Booking"}
+No template found for BookingsController#create, rendering head :no_content
+Completed 204 No Content in 36ms (ActiveRecord: 5.0ms | Allocations: 4849)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 19:10:28 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"z", "email"=>"zx@cv"}, "flight_id"=>""}, "commit"=>"Create Booking"}
+No template found for BookingsController#create, rendering head :no_content
+Completed 204 No Content in 46ms (ActiveRecord: 21.1ms | Allocations: 4819)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:13:00 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 151.8ms | Allocations: 12048)
+  Rendered layout layouts/application.html.erb (Duration: 200.1ms | Allocations: 26377)
+Completed 200 OK in 299ms (Views: 197.1ms | ActiveRecord: 16.4ms | Allocations: 36982)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 19:13:25 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"z", "email"=>"zx@cv"}, "flight_id"=>""}, "commit"=>"Create Booking"}
+Completed 400 Bad Request in 8ms (ActiveRecord: 0.0ms | Allocations: 826)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: flight):
+  
+app/controllers/bookings_controller.rb:21:in `booking_create_params'
+app/controllers/bookings_controller.rb:11:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:13:27 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.6ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 19.3ms | Allocations: 2323)
+  Rendered layout layouts/application.html.erb (Duration: 31.8ms | Allocations: 3437)
+Completed 200 OK in 43ms (Views: 34.7ms | ActiveRecord: 1.0ms | Allocations: 4064)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 19:16:20 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"z", "email"=>"zx@cv"}, "flight_id"=>""}, "commit"=>"Create Booking"}
+Completed 400 Bad Request in 8ms (ActiveRecord: 0.0ms | Allocations: 1992)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: flight):
+  
+app/controllers/bookings_controller.rb:27:in `booking_create_params'
+app/controllers/bookings_controller.rb:11:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:16:22 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 116.8ms | Allocations: 12031)
+  Rendered layout layouts/application.html.erb (Duration: 198.5ms | Allocations: 26359)
+Completed 200 OK in 304ms (Views: 209.2ms | ActiveRecord: 21.5ms | Allocations: 35753)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 19:17:20 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"zx", "email"=>""}, "flight_id"=>""}, "commit"=>"Create Booking"}
+Completed 400 Bad Request in 9ms (ActiveRecord: 0.0ms | Allocations: 2017)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: flight):
+  
+app/controllers/bookings_controller.rb:28:in `booking_create_params'
+app/controllers/bookings_controller.rb:11:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:17:22 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.9ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.5ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 95.2ms | Allocations: 12055)
+  Rendered layout layouts/application.html.erb (Duration: 136.6ms | Allocations: 26384)
+Completed 200 OK in 272ms (Views: 141.0ms | ActiveRecord: 42.4ms | Allocations: 35780)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 19:18:18 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"zx", "email"=>""}, "flight_id"=>""}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passenger. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f506dabe108>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"zx", "email"=>""}, "flight_id"=>""}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/bookings_controller.rb:13:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1278)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 1370)
+Completed 500 Internal Server Error in 107ms (ActiveRecord: 14.3ms | Allocations: 10699)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:16:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:19:11 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 194.4ms | Allocations: 16444)
+  Rendered layout layouts/application.html.erb (Duration: 302.7ms | Allocations: 30805)
+Completed 200 OK in 353ms (Views: 310.9ms | ActiveRecord: 25.1ms | Allocations: 35115)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 19:19:47 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"dsf", "email"=>"feds@df"}, "flight_id"=>""}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passenger. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f503f7648a0>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"dsf", "email"=>"feds@df"}, "flight_id"=>""}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 906)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 997)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 2248)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:16:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:27:07 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (5.9ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.8ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 46.6ms | Allocations: 7296)
+  Rendered layout layouts/application.html.erb (Duration: 48.5ms | Allocations: 7388)
+Completed 500 Internal Server Error in 164ms (ActiveRecord: 10.0ms | Allocations: 20163)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    11:     <span>Enter passenger's data:</span>
+    12:     <br/>
+    13:     <br/>
+    14:     <% for passenger in @passengers do %>
+    15:       <%= f.fields_for passenger.build do |n_f| %>
+    16:         <div>
+    17:             <%= label_tag :name, "Name" %>
+  
+app/views/bookings/new.html.erb:14
+app/views/bookings/new.html.erb:10
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:27:32 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.4ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 14.6ms | Allocations: 2099)
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 2190)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.9ms | Allocations: 2838)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    11:     <span>Enter passenger's data:</span>
+    12:     <br/>
+    13:     <br/>
+    14:     <% for passenger in @passengers do %>
+    15:       <%= f.fields_for passenger.build do |n_f| %>
+    16:         <div>
+    17:             <%= label_tag :name, "Name" %>
+  
+app/views/bookings/new.html.erb:14
+app/views/bookings/new.html.erb:10
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:27:53 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (1.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 48.7ms | Allocations: 7609)
+  Rendered layout layouts/application.html.erb (Duration: 50.4ms | Allocations: 7701)
+Completed 500 Internal Server Error in 249ms (ActiveRecord: 12.8ms | Allocations: 21703)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    11:     <span>Enter passenger's data:</span>
+    12:     <br/>
+    13:     <br/>
+    14:     <% for passenger in @passengers %>
+    15:       <%= f.fields_for passenger.build do |n_f| %>
+    16:         <div>
+    17:             <%= label_tag :name, "Name" %>
+  
+app/views/bookings/new.html.erb:14
+app/views/bookings/new.html.erb:10
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:28:22 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.4ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 50.6ms | Allocations: 7684)
+  Rendered layout layouts/application.html.erb (Duration: 52.2ms | Allocations: 7776)
+Completed 500 Internal Server Error in 166ms (ActiveRecord: 15.2ms | Allocations: 21834)
+
+
+  
+ActionView::Template::Error (undefined method `build' for #<Passenger id: nil, email: nil, name: nil, created_at: nil, updated_at: nil, booking_id: nil>):
+    12:     <br/>
+    13:     <br/>
+    14:     <% for passenger in @passengers %>
+    15:       <%= f.fields_for passenger.build do |n_f| %>
+    16:         <div>
+    17:             <%= label_tag :name, "Name" %>
+    18:             <%= n_f.text_field :name %>
+  
+app/views/bookings/new.html.erb:15
+app/views/bookings/new.html.erb:14:in `each'
+app/views/bookings/new.html.erb:14
+app/views/bookings/new.html.erb:10
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:29:06 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.5ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.9ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (11.8ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 76.0ms | Allocations: 7705)
+  Rendered layout layouts/application.html.erb (Duration: 215.9ms | Allocations: 22032)
+Completed 200 OK in 346ms (Views: 210.1ms | ActiveRecord: 27.1ms | Allocations: 36057)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 19:29:16 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"zx", "email"=>""}, "flight_id"=>""}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passenger. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f506da17588>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"zx", "email"=>""}, "flight_id"=>""}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 999)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms | Allocations: 2878)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:18:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:31:12 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.5ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.7ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 51.6ms | Allocations: 8058)
+  Rendered layout layouts/application.html.erb (Duration: 119.6ms | Allocations: 22385)
+Completed 200 OK in 224ms (Views: 124.7ms | ActiveRecord: 13.4ms | Allocations: 36961)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 19:31:20 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"zx", "email"=>""}, "flight_id"=>""}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passenger. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f506ff426c8>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"zx", "email"=>""}, "flight_id"=>""}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 999)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms | Allocations: 2887)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:20:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:32:17 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 115.9ms | Allocations: 8076)
+  Rendered layout layouts/application.html.erb (Duration: 201.2ms | Allocations: 22404)
+Completed 200 OK in 480ms (Views: 222.8ms | ActiveRecord: 41.0ms | Allocations: 37127)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:32:34 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.5ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 55.3ms | Allocations: 8043)
+  Rendered layout layouts/application.html.erb (Duration: 117.7ms | Allocations: 22378)
+Completed 200 OK in 571ms (Views: 121.6ms | ActiveRecord: 17.6ms | Allocations: 36914)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:33:48 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 41.8ms | Allocations: 8034)
+  Rendered layout layouts/application.html.erb (Duration: 111.7ms | Allocations: 22190)
+Completed 200 OK in 210ms (Views: 116.5ms | ActiveRecord: 22.1ms | Allocations: 36694)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 19:33:57 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"qwww", "email"=>""}, "flight_id"=>""}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passenger. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f506e419c48>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"qwww", "email"=>""}, "flight_id"=>""}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 999)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 2855)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:22:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:36:12 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:5:in `new'
+  [1m[36mPassenger Load (0.3ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" WHERE "passengers"."booking_id" = ?[0m  [["booking_id", 22]]
+  ↳ app/controllers/bookings_controller.rb:11:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.5ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 125.2ms | Allocations: 7996)
+  Rendered layout layouts/application.html.erb (Duration: 183.2ms | Allocations: 22326)
+Completed 200 OK in 285ms (Views: 182.4ms | ActiveRecord: 13.9ms | Allocations: 38060)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:37:04 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.6ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.4ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 78.3ms | Allocations: 8027)
+  Rendered layout layouts/application.html.erb (Duration: 153.3ms | Allocations: 22172)
+Completed 200 OK in 292ms (Views: 156.1ms | ActiveRecord: 13.4ms | Allocations: 36699)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:38:23 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms | Allocations: 1695)
+
+
+  
+NoMethodError (undefined method `id' for #<ActionController::Parameters {"id"=>"22", "number_of_passengers"=>"3"} permitted: true>):
+  
+app/controllers/bookings_controller.rb:4:in `new'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:39:05 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.8ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (1.5ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 109.0ms | Allocations: 8048)
+  Rendered layout layouts/application.html.erb (Duration: 221.2ms | Allocations: 22375)
+Completed 200 OK in 480ms (Views: 225.3ms | ActiveRecord: 33.9ms | Allocations: 37032)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:40:47 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 25.9ms | Allocations: 4661)
+
+
+  
+NoMethodError (undefined method `flight' for Booking:Class):
+  
+app/controllers/bookings_controller.rb:6:in `new'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:43:21 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 16.6ms | Allocations: 4700)
+
+
+  
+NoMethodError (undefined method `flight' for Booking:Class):
+  
+app/controllers/bookings_controller.rb:6:in `new'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:43:33 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 7.1ms | Allocations: 4755)
+
+
+  
+NoMethodError (undefined method `flight_id' for Booking:Class):
+  
+app/controllers/bookings_controller.rb:6:in `new'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:44:46 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+Completed 500 Internal Server Error in 236ms (ActiveRecord: 21.4ms | Allocations: 13442)
+
+
+  
+NoMethodError (undefined method `<<' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:10:in `block in new'
+app/controllers/bookings_controller.rb:10:in `times'
+app/controllers/bookings_controller.rb:10:in `new'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:45:01 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+Completed 500 Internal Server Error in 137ms (ActiveRecord: 9.0ms | Allocations: 13498)
+
+
+  
+NoMethodError (undefined method `<<' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:10:in `block in new'
+app/controllers/bookings_controller.rb:10:in `times'
+app/controllers/bookings_controller.rb:10:in `new'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:45:17 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (2.5ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 95.2ms | Allocations: 8650)
+  Rendered layout layouts/application.html.erb (Duration: 160.7ms | Allocations: 22977)
+Completed 200 OK in 328ms (Views: 162.6ms | ActiveRecord: 36.8ms | Allocations: 37121)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 19:46:52 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.7ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.4ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 90.9ms | Allocations: 8560)
+  Rendered layout layouts/application.html.erb (Duration: 303.6ms | Allocations: 22705)
+Completed 200 OK in 501ms (Views: 322.3ms | ActiveRecord: 35.8ms | Allocations: 36753)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 19:47:07 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"zcvz", "email"=>""}}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passenger. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f503f234920>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"zcvz", "email"=>""}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 999)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 2842)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:21:in `create'
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddBookingRefToPassenger (20240224154747)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "apassengers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT NULL, "name" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "booking_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_apassengers_on_booking_id" ON "apassengers" ("booking_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "apassengers" ("id","email","name","created_at","updated_at","booking_id")
+                     SELECT "id","email","name","created_at","updated_at","booking_id" FROM "passengers"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "passengers"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "passengers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT NULL, "name" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "passengers" ("id","email","name","created_at","updated_at")
+                     SELECT "id","email","name","created_at","updated_at" FROM "apassengers"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "apassengers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20240224154747'[0m
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddBookingRefToPassenger (20240224154747)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "passengers" ADD "booking_id" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_passengers_on_booking_id" ON "passengers" ("booking_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240224154747') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:17:03 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 61.3ms | Allocations: 13339)
+  Rendered layout layouts/application.html.erb (Duration: 181.4ms | Allocations: 44623)
+Completed 200 OK in 799ms (Views: 191.2ms | ActiveRecord: 5.6ms | Allocations: 361126)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:17:12 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"zxc", "email"=>""}}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passenger. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c438718>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"zxc", "email"=>""}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1269)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 1360)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 3413)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:21:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:24:50 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (2.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 31.0ms | Allocations: 8157)
+  Rendered layout layouts/application.html.erb (Duration: 65.9ms | Allocations: 22484)
+Completed 200 OK in 132ms (Views: 68.8ms | ActiveRecord: 3.8ms | Allocations: 36220)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:25:15 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.4ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 33.9ms | Allocations: 7589)
+  Rendered layout layouts/application.html.erb (Duration: 64.1ms | Allocations: 21916)
+Completed 200 OK in 136ms (Views: 66.7ms | ActiveRecord: 20.4ms | Allocations: 36889)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:25:42 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f18206885c8>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/bookings_controller.rb:17:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1230)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 1322)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 6.6ms | Allocations: 10474)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:20:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:27:07 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 31.3ms | Allocations: 7601)
+  Rendered layout layouts/application.html.erb (Duration: 59.7ms | Allocations: 21928)
+Completed 200 OK in 120ms (Views: 63.0ms | ActiveRecord: 7.0ms | Allocations: 36902)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:27:15 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c4dc458>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 999)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2881)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:20:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:28:57 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 42.1ms | Allocations: 7592)
+  Rendered layout layouts/application.html.erb (Duration: 64.7ms | Allocations: 21920)
+Completed 200 OK in 129ms (Views: 65.3ms | ActiveRecord: 5.9ms | Allocations: 36910)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:29:05 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c34f6f8>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 999)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2869)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:20:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:30:02 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.5ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 30.1ms | Allocations: 7586)
+  Rendered layout layouts/application.html.erb (Duration: 68.3ms | Allocations: 21913)
+Completed 200 OK in 133ms (Views: 69.9ms | ActiveRecord: 9.1ms | Allocations: 36882)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:30:08 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c4b8170>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c4b8170>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c4b8170>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 999)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 3164)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:21:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:30:56 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 26.2ms | Allocations: 7598)
+  Rendered layout layouts/application.html.erb (Duration: 47.3ms | Allocations: 21925)
+Completed 200 OK in 112ms (Views: 49.5ms | ActiveRecord: 6.6ms | Allocations: 36891)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:31:03 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c3b1b00>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c3b1b00>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c3b1b00>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 999)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 3163)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:21:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:31:24 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 32.3ms | Allocations: 7598)
+  Rendered layout layouts/application.html.erb (Duration: 62.4ms | Allocations: 21925)
+Completed 200 OK in 129ms (Views: 67.8ms | ActiveRecord: 9.6ms | Allocations: 36944)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:31:31 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f182056c3b0>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f182056c3b0>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f182056c3b0>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qw", "email"=>""}, "1"=>{"name"=>"as", "email"=>""}, "2"=>{"name"=>"zx", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 999)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 3180)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:21:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:32:58 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 44.2ms | Allocations: 7613)
+  Rendered layout layouts/application.html.erb (Duration: 122.6ms | Allocations: 21998)
+Completed 200 OK in 335ms (Views: 126.2ms | ActiveRecord: 8.9ms | Allocations: 36961)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:33:02 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qwe", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181f7583f0>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qwe", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181f7583f0>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qwe", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181f7583f0>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qwe", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 999)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms | Allocations: 3154)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:21:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:34:24 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.7ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 25.1ms | Allocations: 7591)
+  Rendered layout layouts/application.html.erb (Duration: 52.0ms | Allocations: 21918)
+Completed 200 OK in 122ms (Views: 53.6ms | ActiveRecord: 9.1ms | Allocations: 36884)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:34:28 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"adsas", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c3beee0>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"adsas", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c3beee0>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"adsas", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c3beee0>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"adsas", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c3beee0>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"adsas", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 999)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 3325)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:22:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:37:05 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 47.5ms | Allocations: 7830)
+  Rendered layout layouts/application.html.erb (Duration: 127.9ms | Allocations: 22159)
+Completed 200 OK in 193ms (Views: 131.6ms | ActiveRecord: 8.4ms | Allocations: 37125)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:37:09 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"asd", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c327130>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"asd", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c327130>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"asd", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c327130>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"asd", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f181c327130>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"asd", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 999)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 3373)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:22:in `create'
+Started GET "/documents" for ::1 at 2024-02-24 20:39:11 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/documents"):
+  
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:39:36 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 34.6ms | Allocations: 7774)
+  Rendered layout layouts/application.html.erb (Duration: 87.7ms | Allocations: 22126)
+Completed 200 OK in 154ms (Views: 89.1ms | ActiveRecord: 6.3ms | Allocations: 37147)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:39:39 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"asd", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f17ef069240>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"asd", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f17ef069240>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"asd", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f17ef069240>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"asd", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+[31mUnpermitted parameter: :passengers_attributes. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f17ef069240>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"asd", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 999)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 3379)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:22:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:42:04 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 26.4ms | Allocations: 7734)
+  Rendered layout layouts/application.html.erb (Duration: 60.6ms | Allocations: 22061)
+Completed 200 OK in 119ms (Views: 60.9ms | ActiveRecord: 9.7ms | Allocations: 36993)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:42:08 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"cxzc", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 836)
+
+
+  
+TypeError (no implicit conversion of Symbol into Integer):
+  
+app/controllers/bookings_controller.rb:32:in `[]'
+app/controllers/bookings_controller.rb:32:in `booking_create_params'
+app/controllers/bookings_controller.rb:13:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:43:39 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 25.5ms | Allocations: 7737)
+  Rendered layout layouts/application.html.erb (Duration: 55.2ms | Allocations: 22065)
+Completed 200 OK in 122ms (Views: 58.6ms | ActiveRecord: 7.7ms | Allocations: 37020)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:43:42 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"sfg", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 833)
+
+
+  
+NameError (undefined local variable or method `passengers_attributes' for #<BookingsController:0x00000000040060>):
+  
+app/controllers/bookings_controller.rb:32:in `booking_create_params'
+app/controllers/bookings_controller.rb:13:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:44:29 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.5ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 22.6ms | Allocations: 7731)
+  Rendered layout layouts/application.html.erb (Duration: 51.0ms | Allocations: 22058)
+Completed 200 OK in 105ms (Views: 52.6ms | ActiveRecord: 9.1ms | Allocations: 36990)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:44:35 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"sdfsd", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 841)
+
+
+  
+NameError (undefined local variable or method `passengers_attributes' for #<BookingsController:0x00000000043b20>):
+  
+app/controllers/bookings_controller.rb:32:in `booking_create_params'
+app/controllers/bookings_controller.rb:13:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:45:04 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 39.1ms | Allocations: 7766)
+  Rendered layout layouts/application.html.erb (Duration: 64.7ms | Allocations: 22096)
+Completed 200 OK in 124ms (Views: 66.0ms | ActiveRecord: 6.4ms | Allocations: 37025)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:45:10 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"ada", "email"=>""}, "1"=>{"name"=>"fwsd", "email"=>""}, "2"=>{"name"=>"xz", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 999)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 3547)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:21:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:47:00 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 21.8ms | Allocations: 7730)
+  Rendered layout layouts/application.html.erb (Duration: 50.8ms | Allocations: 22057)
+Completed 200 OK in 118ms (Views: 53.7ms | ActiveRecord: 8.4ms | Allocations: 36992)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:47:04 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"adssa", "email"=>""}, "1"=>{"name"=>"", "email"=>""}, "2"=>{"name"=>"", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:16:in `create'
+  [1m[36mFlight Load (2.5ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/bookings_controller.rb:16:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 999)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 2.6ms | Allocations: 6543)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:19:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:48:43 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 24.7ms | Allocations: 7742)
+  Rendered layout layouts/application.html.erb (Duration: 65.5ms | Allocations: 22069)
+Completed 200 OK in 129ms (Views: 68.2ms | ActiveRecord: 10.0ms | Allocations: 37000)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:48:49 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"dfas", "email"=>""}, "1"=>{"name"=>"dafad", "email"=>""}, "2"=>{"name"=>"zcvzx", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:17:in `create'
+  [1m[36mFlight Load (2.7ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/bookings_controller.rb:17:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 999)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 2.9ms | Allocations: 6481)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:20:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:50:38 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 24.5ms | Allocations: 7749)
+  Rendered layout layouts/application.html.erb (Duration: 48.9ms | Allocations: 22076)
+Completed 200 OK in 123ms (Views: 51.2ms | ActiveRecord: 6.8ms | Allocations: 37007)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:50:47 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"dfsf", "email"=>""}, "1"=>{"name"=>"asdasd", "email"=>""}, "2"=>{"name"=>"XCzxc", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 999)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms | Allocations: 3314)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:20:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:52:18 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.6ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (1.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 25.6ms | Allocations: 7749)
+  Rendered layout layouts/application.html.erb (Duration: 64.7ms | Allocations: 22078)
+Completed 200 OK in 125ms (Views: 64.9ms | ActiveRecord: 8.9ms | Allocations: 37012)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:52:25 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qerqwe", "email"=>""}, "1"=>{"name"=>"asfasd", "email"=>""}, "2"=>{"name"=>"zxczx", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:18:in `create'
+  [1m[36mFlight Load (2.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/bookings_controller.rb:18:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 999)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 2.5ms | Allocations: 6473)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:21:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:53:17 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 27.9ms | Allocations: 7734)
+  Rendered layout layouts/application.html.erb (Duration: 62.6ms | Allocations: 22062)
+Completed 200 OK in 129ms (Views: 64.9ms | ActiveRecord: 6.8ms | Allocations: 37015)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:53:24 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qerwr", "email"=>""}, "1"=>{"name"=>"adadf", "email"=>""}, "2"=>{"name"=>"zxzc", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:18:in `create'
+  [1m[36mFlight Load (2.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/bookings_controller.rb:18:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 999)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 2.5ms | Allocations: 7173)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:21:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:54:25 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 37.4ms | Allocations: 7757)
+  Rendered layout layouts/application.html.erb (Duration: 74.6ms | Allocations: 22087)
+Completed 200 OK in 140ms (Views: 77.7ms | ActiveRecord: 6.5ms | Allocations: 37015)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:54:32 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qerqw", "email"=>""}, "1"=>{"name"=>"adsfasf", "email"=>""}, "2"=>{"name"=>"zcvzx", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:18:in `create'
+  [1m[36mFlight Load (2.8ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/bookings_controller.rb:18:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 999)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 3.1ms | Allocations: 7047)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:21:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:55:29 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.9ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.6ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 38.9ms | Allocations: 7716)
+  Rendered layout layouts/application.html.erb (Duration: 80.0ms | Allocations: 22044)
+Completed 200 OK in 159ms (Views: 82.8ms | ActiveRecord: 11.2ms | Allocations: 36975)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:55:38 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"eqwrty", "email"=>""}, "1"=>{"name"=>"sfdg", "email"=>""}, "2"=>{"name"=>"zxcvb", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:14:in `create'
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:16:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 999)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.4ms | Allocations: 6560)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:22:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:57:14 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 38.0ms | Allocations: 7716)
+  Rendered layout layouts/application.html.erb (Duration: 72.6ms | Allocations: 22043)
+Completed 200 OK in 141ms (Views: 74.3ms | ActiveRecord: 9.8ms | Allocations: 36969)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:57:21 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qwert", "email"=>""}, "1"=>{"name"=>"asdfg", "email"=>""}, "2"=>{"name"=>"zxcvb", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:18:in `create'
+  [1m[36mFlight Load (2.5ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/bookings_controller.rb:18:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 999)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 2.8ms | Allocations: 7422)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:22:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 20:58:51 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 41.1ms | Allocations: 7728)
+  Rendered layout layouts/application.html.erb (Duration: 82.7ms | Allocations: 22055)
+Completed 200 OK in 152ms (Views: 85.6ms | ActiveRecord: 6.7ms | Allocations: 36981)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 20:59:06 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qwert", "email"=>""}, "1"=>{"name"=>"sdfgh", "email"=>""}, "2"=>{"name"=>"xcvbn", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:14:in `create'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.1ms | Allocations: 2395)
+
+
+  
+NoMethodError (undefined method `passengers_bookings=' for #<Booking id: nil, number_of_passengers: 3, created_at: nil, updated_at: nil, flight_id: 22>):
+  
+app/controllers/bookings_controller.rb:16:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:09:25 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (4.5ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 17.4ms | Allocations: 7235)
+  Rendered layout layouts/application.html.erb (Duration: 18.0ms | Allocations: 7327)
+Completed 500 Internal Server Error in 76ms (ActiveRecord: 6.6ms | Allocations: 20996)
+
+
+  
+ActionView::Template::Error (undefined method `passengers' for :@booking:Symbol):
+    12:     <span>Enter passenger's data:</span>
+    13:     <br/>
+    14:     <br/>
+    15:       <%= f.fields_for :@booking.passengers.build do |n_f| %>
+    16:         <div>
+    17:             <%= label_tag :name, "Name" %>
+    18:             <%= n_f.text_field :name %>
+  
+app/views/bookings/new.html.erb:15
+app/views/bookings/new.html.erb:11
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:09:29 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (1.0ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 10.4ms | Allocations: 2100)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 2191)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 1.2ms | Allocations: 3249)
+
+
+  
+ActionView::Template::Error (undefined method `passengers' for :@booking:Symbol):
+    12:     <span>Enter passenger's data:</span>
+    13:     <br/>
+    14:     <br/>
+    15:       <%= f.fields_for :@booking.passengers.build do |n_f| %>
+    16:         <div>
+    17:             <%= label_tag :name, "Name" %>
+    18:             <%= n_f.text_field :name %>
+  
+app/views/bookings/new.html.erb:15
+app/views/bookings/new.html.erb:11
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:09:30 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.4ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 13.3ms | Allocations: 2100)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 2191)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.7ms | Allocations: 3245)
+
+
+  
+ActionView::Template::Error (undefined method `passengers' for :@booking:Symbol):
+    12:     <span>Enter passenger's data:</span>
+    13:     <br/>
+    14:     <br/>
+    15:       <%= f.fields_for :@booking.passengers.build do |n_f| %>
+    16:         <div>
+    17:             <%= label_tag :name, "Name" %>
+    18:             <%= n_f.text_field :name %>
+  
+app/views/bookings/new.html.erb:15
+app/views/bookings/new.html.erb:11
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:09:31 +0300
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:09:31 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (1.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 25.2ms | Allocations: 11152)
+  Rendered layout layouts/application.html.erb (Duration: 29.3ms | Allocations: 11835)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 2.1ms | Allocations: 19172)
+
+
+  
+ActionView::Template::Error (undefined method `passengers' for :@booking:Symbol):
+    12:     <span>Enter passenger's data:</span>
+    13:     <br/>
+    14:     <br/>
+    15:       <%= f.fields_for :@booking.passengers.build do |n_f| %>
+    16:         <div>
+    17:             <%= label_tag :name, "Name" %>
+    18:             <%= n_f.text_field :name %>
+  
+app/views/bookings/new.html.erb:15
+app/views/bookings/new.html.erb:11
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (1.8ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 19.1ms | Allocations: 9402)
+  Rendered layout layouts/application.html.erb (Duration: 28.5ms | Allocations: 14544)
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 3.0ms | Allocations: 29711)
+
+
+  
+ActionView::Template::Error (undefined method `passengers' for :@booking:Symbol):
+    12:     <span>Enter passenger's data:</span>
+    13:     <br/>
+    14:     <br/>
+    15:       <%= f.fields_for :@booking.passengers.build do |n_f| %>
+    16:         <div>
+    17:             <%= label_tag :name, "Name" %>
+    18:             <%= n_f.text_field :name %>
+  
+app/views/bookings/new.html.erb:15
+app/views/bookings/new.html.erb:11
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:10:24 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.5ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 13.7ms | Allocations: 2100)
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 2191)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.9ms | Allocations: 3245)
+
+
+  
+ActionView::Template::Error (undefined method `passengers' for :@booking:Symbol):
+    12:     <span>Enter passenger's data:</span>
+    13:     <br/>
+    14:     <br/>
+    15:       <%= f.fields_for :@booking.passengers.build do |n_f| %>
+    16:         <div>
+    17:             <%= label_tag :name, "Name" %>
+    18:             <%= n_f.text_field :name %>
+  
+app/views/bookings/new.html.erb:15
+app/views/bookings/new.html.erb:11
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:10:51 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.4ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 9.7ms | Allocations: 2100)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 2191)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.5ms | Allocations: 3245)
+
+
+  
+ActionView::Template::Error (undefined method `passengers' for :@booking:Symbol):
+    12:     <span>Enter passenger's data:</span>
+    13:     <br/>
+    14:     <br/>
+    15:       <%= f.fields_for :@booking.passengers.build do |n_f| %>
+    16:         <div>
+    17:             <%= label_tag :name, "Name" %>
+    18:             <%= n_f.text_field :name %>
+  
+app/views/bookings/new.html.erb:15
+app/views/bookings/new.html.erb:11
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:10:53 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.4ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 8.2ms | Allocations: 2100)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 2191)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.9ms | Allocations: 3245)
+
+
+  
+ActionView::Template::Error (undefined method `passengers' for :@booking:Symbol):
+    12:     <span>Enter passenger's data:</span>
+    13:     <br/>
+    14:     <br/>
+    15:       <%= f.fields_for :@booking.passengers.build do |n_f| %>
+    16:         <div>
+    17:             <%= label_tag :name, "Name" %>
+    18:             <%= n_f.text_field :name %>
+  
+app/views/bookings/new.html.erb:15
+app/views/bookings/new.html.erb:11
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:11:11 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 29.7ms | Allocations: 7416)
+  Rendered layout layouts/application.html.erb (Duration: 60.3ms | Allocations: 21743)
+Completed 200 OK in 137ms (Views: 63.2ms | ActiveRecord: 16.7ms | Allocations: 36669)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:11:44 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.6ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 26.8ms | Allocations: 7876)
+  Rendered layout layouts/application.html.erb (Duration: 51.0ms | Allocations: 22203)
+Completed 200 OK in 107ms (Views: 52.5ms | ActiveRecord: 7.6ms | Allocations: 37076)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 21:11:53 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"zxzxv", "email"=>""}}, "commit"=>"Create Booking"}
+[31mUnpermitted parameter: :passenger. Context: { controller: BookingsController, action: create, request: #<ActionDispatch::Request:0x00007f17eeaacfa0>, params: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passenger"=>{"name"=>"zxzxv", "email"=>""}}, "commit"=>"Create Booking", "controller"=>"bookings", "action"=>"create"} }[0m
+Completed 404 Not Found in 3ms (ActiveRecord: 0.0ms | Allocations: 1008)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Flight without an ID):
+  
+app/controllers/bookings_controller.rb:14:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:11:54 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 18.1ms | Allocations: 2204)
+  Rendered layout layouts/application.html.erb (Duration: 22.6ms | Allocations: 3318)
+Completed 200 OK in 31ms (Views: 23.4ms | ActiveRecord: 0.6ms | Allocations: 4393)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:14:14 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.7ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 29.9ms | Allocations: 8063)
+  Rendered layout layouts/application.html.erb (Duration: 30.3ms | Allocations: 8155)
+Completed 500 Internal Server Error in 92ms (ActiveRecord: 9.0ms | Allocations: 23054)
+
+
+  
+ActionView::Template::Error (undefined method `email' for #<ActiveRecord::Associations::CollectionProxy [#<Passenger id: nil, email: nil, name: nil, created_at: nil, updated_at: nil, booking_id: nil>, #<Passenger id: nil, email: nil, name: nil, created_at: nil, updated_at: nil, booking_id: nil>, #<Passenger id: nil, email: nil, name: nil, created_at: nil, updated_at: nil, booking_id: nil>]>):
+    18:         </div>
+    19:         <div>
+    20:             <%= label_tag :email, "Email" %>
+    21:             <%= n_f.email_field :email %>
+    22:         </div>
+    23:         <br/>
+    24:     <% end %>
+  
+app/views/bookings/new.html.erb:21
+app/views/bookings/new.html.erb:14
+app/views/bookings/new.html.erb:10
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:16:49 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.3ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 25.9ms | Allocations: 7617)
+  Rendered layout layouts/application.html.erb (Duration: 62.3ms | Allocations: 21944)
+Completed 200 OK in 122ms (Views: 64.0ms | ActiveRecord: 8.1ms | Allocations: 36875)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 21:16:59 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qewr", "email"=>""}, "1"=>{"name"=>"adsf", "email"=>""}, "2"=>{"name"=>"zxvcv", "email"=>""}}}, "commit"=>"Create Booking"}
+Completed 404 Not Found in 3ms (ActiveRecord: 0.0ms | Allocations: 1057)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Flight without an ID):
+  
+app/controllers/bookings_controller.rb:14:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:17:00 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.5ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 16.8ms | Allocations: 1972)
+  Rendered layout layouts/application.html.erb (Duration: 22.5ms | Allocations: 3086)
+Completed 200 OK in 38ms (Views: 28.5ms | ActiveRecord: 0.8ms | Allocations: 4164)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:18:54 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (1.0ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.4ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 25.5ms | Allocations: 7626)
+  Rendered layout layouts/application.html.erb (Duration: 55.2ms | Allocations: 21938)
+Completed 200 OK in 129ms (Views: 58.5ms | ActiveRecord: 8.3ms | Allocations: 36863)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 21:19:02 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qewr", "email"=>""}, "1"=>{"name"=>"adsf", "email"=>""}, "2"=>{"name"=>"XCzcv", "email"=>""}}}, "commit"=>"Create Booking"}
+Completed 404 Not Found in 3ms (ActiveRecord: 0.0ms | Allocations: 1250)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Flight without an ID):
+  
+app/controllers/bookings_controller.rb:15:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:19:02 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 15.2ms | Allocations: 1954)
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 3068)
+Completed 200 OK in 28ms (Views: 18.9ms | ActiveRecord: 0.5ms | Allocations: 4144)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:20:24 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.3ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 21.4ms | Allocations: 7616)
+  Rendered layout layouts/application.html.erb (Duration: 46.9ms | Allocations: 21943)
+Completed 200 OK in 98ms (Views: 49.0ms | ActiveRecord: 5.8ms | Allocations: 36870)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 21:20:30 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qwer", "email"=>""}, "1"=>{"name"=>"adfs", "email"=>""}, "2"=>{"name"=>"zcv", "email"=>""}}}, "commit"=>"Create Booking"}
+Completed 404 Not Found in 3ms (ActiveRecord: 0.0ms | Allocations: 1256)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Flight without an ID):
+  
+app/controllers/bookings_controller.rb:15:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:20:31 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.5ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.5ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 15.2ms | Allocations: 1945)
+  Rendered layout layouts/application.html.erb (Duration: 20.0ms | Allocations: 3059)
+Completed 200 OK in 38ms (Views: 20.3ms | ActiveRecord: 1.3ms | Allocations: 4135)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 21:21:16 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qewr", "email"=>""}, "1"=>{"name"=>"adsf", "email"=>""}, "2"=>{"name"=>"zxxv", "email"=>""}}}, "commit"=>"Create Booking"}
+Completed 404 Not Found in 11ms (ActiveRecord: 3.4ms | Allocations: 3312)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Flight without an ID):
+  
+app/controllers/bookings_controller.rb:15:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:21:16 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.7ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 39.5ms | Allocations: 7597)
+  Rendered layout layouts/application.html.erb (Duration: 81.4ms | Allocations: 21925)
+Completed 200 OK in 155ms (Views: 83.7ms | ActiveRecord: 5.0ms | Allocations: 34785)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 21:23:51 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qewr", "email"=>""}, "1"=>{"name"=>"asffd", "email"=>""}, "2"=>{"name"=>"zcvcv", "email"=>""}}}, "commit"=>"Create Booking"}
+Completed 404 Not Found in 12ms (ActiveRecord: 2.7ms | Allocations: 3320)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Flight without an ID):
+  
+app/controllers/bookings_controller.rb:15:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:23:52 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 52.6ms | Allocations: 7750)
+  Rendered layout layouts/application.html.erb (Duration: 99.5ms | Allocations: 22080)
+Completed 200 OK in 166ms (Views: 100.4ms | ActiveRecord: 6.1ms | Allocations: 34916)
+
+
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:24:08 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 28.8ms | Allocations: 2028)
+  Rendered layout layouts/application.html.erb (Duration: 34.6ms | Allocations: 3127)
+Completed 200 OK in 66ms (Views: 45.7ms | ActiveRecord: 0.4ms | Allocations: 4200)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 21:24:19 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qwer", "email"=>""}, "1"=>{"name"=>"asdfg", "email"=>""}, "2"=>{"name"=>"zxxxxxxxxxxxxxvc", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+  [1m[36mFlight Load (0.2ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.2ms | Allocations: 2555)
+
+
+  
+NoMethodError (undefined method `passengers_bookings=' for #<Booking id: nil, number_of_passengers: 3, created_at: nil, updated_at: nil, flight_id: 22>):
+  
+app/controllers/bookings_controller.rb:17:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:25:25 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (0.5ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.4ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 121.8ms | Allocations: 7727)
+  Rendered layout layouts/application.html.erb (Duration: 325.5ms | Allocations: 22129)
+Completed 200 OK in 408ms (Views: 335.7ms | ActiveRecord: 7.3ms | Allocations: 37057)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 21:25:39 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qwer", "email"=>""}, "1"=>{"name"=>"asdf", "email"=>""}, "2"=>{"name"=>"zxxcv", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:19:in `create'
+  [1m[36mFlight Load (2.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/bookings_controller.rb:19:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  Rendered bookings/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 908)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 999)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 2.3ms | Allocations: 7617)
+
+
+  
+ActionView::Template::Error (undefined method `arrival_airport' for nil:NilClass):
+    2: <br/>
+    3: <br/>
+    4: <span>Information</span>
+    5:  <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    6:     Departure: <%= @flight.departure_airport.code %> 
+    7:     Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+    8: </p>
+  
+app/views/bookings/new.html.erb:5
+app/controllers/bookings_controller.rb:23:in `create'
+Started GET "/bookings/new?flight%5Bid%5D=&flight%5Bid%5D=22&flight%5Bnumber_of_passengers%5D=3&commit=Book+flight" for ::1 at 2024-02-24 21:34:14 +0300
+Processing by BookingsController#new as HTML
+  Parameters: {"flight"=>{"id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Book flight"}
+  [1m[36mFlight Load (3.0ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:6:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering bookings/new.html.erb within layouts/application
+  [1m[36mAirport Load (0.2ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:5
+  [1m[36mAirport Load (0.1ms)[0m  [1m[34mSELECT "airports".* FROM "airports" WHERE "airports"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/views/bookings/new.html.erb:6
+  Rendered bookings/new.html.erb within layouts/application (Duration: 22.3ms | Allocations: 7418)
+  Rendered layout layouts/application.html.erb (Duration: 42.7ms | Allocations: 21745)
+Completed 200 OK in 96ms (Views: 45.8ms | ActiveRecord: 5.1ms | Allocations: 35436)
+
+
+Started POST "/bookings" for ::1 at 2024-02-24 21:34:24 +0300
+Processing by BookingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "booking"=>{"passengers_attributes"=>{"0"=>{"name"=>"qwer", "email"=>""}, "1"=>{"name"=>"asdf", "email"=>""}, "2"=>{"name"=>"zxxxxxxxxvc", "email"=>""}}, "flight_id"=>"22", "number_of_passengers"=>"3"}, "commit"=>"Create Booking"}
+  [1m[36mFlight Load (0.1ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mFlight Load (2.4ms)[0m  [1m[34mSELECT "flights".* FROM "flights" WHERE "flights"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mBooking Create (0.2ms)[0m  [1m[32mINSERT INTO "bookings" ("number_of_passengers", "created_at", "updated_at", "flight_id") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["number_of_passengers", 3], ["created_at", "2024-02-24 18:34:24.197454"], ["updated_at", "2024-02-24 18:34:24.197454"], ["flight_id", 22]]
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mPassenger Create (0.2ms)[0m  [1m[32mINSERT INTO "passengers" ("email", "name", "created_at", "updated_at", "booking_id") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", ""], ["name", "qwer"], ["created_at", "2024-02-24 18:34:24.201457"], ["updated_at", "2024-02-24 18:34:24.201457"], ["booking_id", 1]]
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mPassenger Create (0.2ms)[0m  [1m[32mINSERT INTO "passengers" ("email", "name", "created_at", "updated_at", "booking_id") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", ""], ["name", "asdf"], ["created_at", "2024-02-24 18:34:24.204145"], ["updated_at", "2024-02-24 18:34:24.204145"], ["booking_id", 1]]
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mPassenger Create (0.3ms)[0m  [1m[32mINSERT INTO "passengers" ("email", "name", "created_at", "updated_at", "booking_id") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", ""], ["name", "zxxxxxxxxvc"], ["created_at", "2024-02-24 18:34:24.207140"], ["updated_at", "2024-02-24 18:34:24.207140"], ["booking_id", 1]]
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+Redirected to 
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 7.6ms | Allocations: 10008)
+
+
+  
+NoMethodError (undefined method `flights_path_url' for #<BookingsController:0x00000000094188>):
+  
+app/controllers/bookings_controller.rb:21:in `create'
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" ORDER BY "bookings"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mBooking Load (0.1ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" ORDER BY "bookings"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPassenger Load (0.2ms)[0m  [1m[34mSELECT "passengers".* FROM "passengers" WHERE "passengers"."booking_id" = ? /* loading for pp */ LIMIT ?[0m  [["booking_id", 1], ["LIMIT", 11]]

@@ -1,0 +1,28 @@
+<strong>Booking </strong>
+<br/>
+<br/>
+<span>Information</span>
+ <p>Arrival: <%= @flight.arrival_airport.code %> - 
+    Departure: <%= @flight.departure_airport.code %> 
+    Date: <%= Time.parse(@flight.start_datetime).to_fs(:long) %>
+</p>
+
+  <%= form_with model: @booking, url: bookings_path(@booking), method: :post do |f| %>
+    <span>Enter passenger's data:</span>
+    <br/>
+    <br/>
+      <%= f.fields_for :passengers do |n_f| %>
+        <div>
+            <%= label_tag :name, "Name" %>
+            <%= n_f.text_field :name %>
+        </div>
+        <div>
+            <%= label_tag :email, "Email" %>
+            <%= n_f.email_field :email %>
+        </div>
+        <br/>
+    <% end %>
+    <%= f.hidden_field :flight_id, flight_id: @flight.id %>
+    <%= f.hidden_field :number_of_passengers, number_of_passengers: @number_of_passengers %>
+    <%= f.submit %>
+  <% end %>
