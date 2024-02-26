@@ -18,3 +18,7 @@ cookies and sessions https://www.youtube.com/watch?v=mqUbnZIY3OQ
 more info about AR queries https://www.theodinproject.com/lessons/ruby-on-rails-active-record-queries#additional-resources
 
 AR collbacks(also generally great thoughts about models) https://samuelmullen.com/articles/guidelines-for-using-activerecord-callbacks
+
+About API https://www.theodinproject.com/lessons/ruby-on-rails-apis-and-building-your-own#additional-resources
+
+About external APIs (OAuth) https://www.theodinproject.com/lessons/ruby-on-rails-working-with-external-apis#assignment

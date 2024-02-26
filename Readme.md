@@ -14,6 +14,7 @@ This repository created to store completed (or not🙂️) tasks from [The Odin 
     first time tried to use devise gem for aouthorization check 🛡️ [task](https://www.theodinproject.com/lessons/ruby-on-rails-members-only);
   - **[private-events](https://github.com/Yaugesha/Private-events)** - this task checks knowledge of ActiveRecord queries and associations 🗄️ [task](https://www.theodinproject.com/lessons/ruby-on-rails-private-events);
   - **[flight-booker](https://github.com/Yaugesha/RoR-by-the-Odin-Project/tree/main/rails/flight-booker)** - advanced forms task 📝 [task](https://www.theodinproject.com/lessons/ruby-on-rails-flight-booker);
+  - **[kittens](https://github.com/Yaugesha/RoR-by-the-Odin-Project/tree/main/rails/kittens)** - touch to building an APIs [task](https://www.theodinproject.com/lessons/ruby-on-rails-kittens-api);
 
 - ### 📁ruby
   - 📁 custom enumerable project
