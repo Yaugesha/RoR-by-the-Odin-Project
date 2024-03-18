@@ -1,0 +1,52 @@
+<div>
+  <% flash.each do |type, msg| %>
+    <div>
+      <%= msg %>
+    </div>
+  <% end %>  
+</div>
+
+<%= form_with model: @flight, url: flights_path, method: :get do |f| %>
+  <div>
+    <%= label_tag :departure_airport, "Departure" %>
+    <%= f.select(:departure_airport, @departure_options)%>
+  </div>
+  <br/>
+  <div>
+    <%= label_tag :arrival_airport, "Arrival" %>
+    <%= f.select(:arrival_airport, @arrival_options) %>
+  </div>
+  <br/>
+    <div>
+      <%= label_tag :number_of_passengers, "Number of passengers"  %>
+      <%= f.number_field :number_of_passengers %>
+    </div>
+  <br/>
+  <div>
+    <%= label_tag :start_datetime, "Date" %>
+    <%= f.date_field :start_datetime %>
+  </div>
+  <br/>
+  <%= f.submit "Search" %>
+<% end %>
+
+
+<% if !@flights.empty? %>
+  <% for flight in @flights %>
+    <p>Arrival: <%= flight.arrival_airport.code %> - 
+    Departure: <%= flight.departure_airport.code %> 
+    Date: <%= Time.parse(flight.start_datetime).to_fs(:long) %></p>
+  <% end %>
+
+  
+  <%= form_with model: @flight, url: new_booking_path ,method: :get do |f| %>
+    <div>
+      <%= label_tag :id, "Chose time" %> 
+      <%= f.collection_radio_buttons :id, @flights, :id, :start_datetime %>
+    </div>
+    <br/>
+    <%= f.hidden_field :number_of_passengers, number_of_passengers: @passengers %>
+    <%= f.submit "Book flight" %>
+  <% end %>
+<% end %>
+
