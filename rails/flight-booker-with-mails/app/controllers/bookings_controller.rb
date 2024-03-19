@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
 
   def new
+    p params
     @booking = Booking.new(flight_id: booking_new_params[:id],
                            number_of_passengers: booking_new_params[:number_of_passengers])
     @flight = Flight.find(@booking.flight_id)
@@ -16,8 +17,11 @@ class BookingsController < ApplicationController
 
     if @booking.save
       redirect_to flights_path
+      @booking.passengers.each do |passenger|
+        PassengerMailer.with(user: passenger, booking: @booking).confirmation_email.deliver_now
+      end
     else
-    p @booking.errors.full_messages
+      @booking.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end

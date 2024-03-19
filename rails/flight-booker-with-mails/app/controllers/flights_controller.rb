@@ -17,7 +17,6 @@ class FlightsController < ApplicationController
 
       if @flights != []
         flash[:success] = "Results found"
-        @passengers = params["flight"]["number_of_passengers"]
       else
         flash[:notice] = "No rasults found"
       end

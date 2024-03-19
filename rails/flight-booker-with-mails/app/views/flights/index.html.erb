@@ -16,12 +16,6 @@
     <%= label_tag :arrival_airport, "Arrival" %>
     <%= f.select(:arrival_airport, @arrival_options) %>
   </div>
-  <br/>
-    <div>
-      <%= label_tag :number_of_passengers, "Number of passengers"  %>
-      <%= f.number_field :number_of_passengers %>
-    </div>
-  <br/>
   <div>
     <%= label_tag :start_datetime, "Date" %>
     <%= f.date_field :start_datetime %>
@@ -45,7 +39,12 @@
       <%= f.collection_radio_buttons :id, @flights, :id, :start_datetime %>
     </div>
     <br/>
-    <%= f.hidden_field :number_of_passengers, number_of_passengers: @passengers %>
+      <div>
+        <%= label_tag :number_of_passengers, "Number of passengers"  %>
+        <%= f.number_field :number_of_passengers %>
+      </div>
+    <br/>
+    <br/>
     <%= f.submit "Book flight" %>
   <% end %>
 <% end %>

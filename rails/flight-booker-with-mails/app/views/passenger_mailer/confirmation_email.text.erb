@@ -1,0 +1,9 @@
+Please confirm flight booking ticket, <%= @user.name %>
+===============================================
+
+You booked ticket to flight from <%= @booking.flight.arrival_airport %>
+to <%= @booking.flight.departure_airport%>, on <%= @booking.flight.start_datetime%>
+
+To confirm booking go to this link: <%= @url %>
+
+Thanks for booking and enjoy your flight!
