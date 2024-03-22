@@ -1,4 +1,4 @@
-require_relative ("linked_list")
+ require_relative ("linked_list")
 
 class Square
   attr_accessor :row, :column
@@ -6,25 +6,6 @@ class Square
   def initialize(row, column)
     @row = row
     @column = column
-    @lt=nil
-    @tl=nil
-    @tr=nil
-    @rt=nil
-    @ld=nil
-    @dl=nil
-    @dr=nil
-    @rd=nil
-  end
-
-  def define_moves
-    @lt=Square.new(self.row-2, self.column+1)
-    @tl=Square.new(self.row-1, self.column+2)
-    @tr=Square.new(self.row+1, self.column+2)
-    @rt=Square.new(self.row+2, self.column+1)
-    @ld=Square.new(self.row-2, self.column-1)
-    @dl=Square.new(self.row-1, self.column-2)
-    @dr=Square.new(self.row+1, self.column-2)
-    @rd=Square.new(self.row+2, self.column-1)
   end
 end
 
@@ -38,28 +19,59 @@ class Knight
   def knight_moves(start, finish)
     position = Square.new(start[0], start[1])
     list = LinkedList.new
-    find_finish(position, finish, 0, list)
+    list.append([position])
+    find_finish(position, finish, list)
   end
 
-  def find_finish(position, finish, moves, list)
-    [-2, -1, 1, 2].each do |row|
-      if !(position.row+row).between?(0, 8)
-        next
-      end
-      [-2, -1, 1, 2].each do |col|
-        if !(position.column+col).between?(0, 8) || row.abs == col.abs
-          next
+
+  def find_finish(position, finish, list)
+    flag = false
+    first_finish_path = []
+    paths = 0
+    until list.size == paths do
+      [-2, -1, 1, 2].each do |row|
+        if (position.row + row).between?(0, 7)
+          [-2, -1, 1, 2].each do |col|
+            if (position.column + col).between?(0, 7) && row.abs != col.abs
+              moved_position = move(position, row, col)
+              list.append(list.head.value.dup.push(moved_position))
+              # p moved_position, list.to_s
+              if [moved_position.row, moved_position.column] == finish
+                unless flag
+                  flag = true
+                  first_finish_path = list.tail.value
+                  paths += 1
+                end
+                # p first_finish_path
+                break
+              end
+            end
+          end
         end
-        moved_position = move(position, row, col)
-        list.append(moved_position)
-        return moves if [position.row, position.column] == finish
       end
+      list.remove_at(0)
+      unless first_finish_path == []
+        i = 0
+        until i == list.size
+          # p i, list.to_s
+          curr_list_node = list.at(i).value
+          if curr_list_node.length >= first_finish_path.length &&
+             [curr_list_node.last.row, curr_list_node.last.column] != finish
+            list.remove_at(i)
+          else
+            i += 1
+          end
+        end
+      end
+      position = list.head.value.last
+      flag = false
     end
-    next_pos = list.at(0)
-    list.remove_at(0)
-    find_finish(next_pos.value, finish, moves+1, list)
+    list
   end
+
 end
 
 knight = Knight.new
-p knight.knight_moves([0, 0], [2, 4])
+p knight.knight_moves([0, 0], [2, 5]).to_s
+p knight.knight_moves([0, 0], [6, 6]).to_s
+p knight.knight_moves([5, 4], [3, 1]).to_s
