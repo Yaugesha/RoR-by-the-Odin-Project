@@ -1,11 +1,22 @@
- require_relative ("linked_list")
-
 class Square
   attr_accessor :row, :column
 
   def initialize(row, column)
     @row = row
     @column = column
+  end
+end
+
+class Array
+  def to_s
+    self.reduce("") do |accum_path, path|
+      path_route = path.reduce("") do |accum_square, square|
+        accum_square << "[#{square.row}, #{square.column}]"
+        accum_square << " -> " unless square == path.last
+        accum_square
+      end
+      accum_path << path_route + "; "
+    end
   end
 end
 
@@ -18,55 +29,46 @@ class Knight
 
   def knight_moves(start, finish)
     position = Square.new(start[0], start[1])
-    list = LinkedList.new
-    list.append([position])
-    find_finish(position, finish, list)
+    list = [[position]]
+    find_finish_paths(position, finish, list)
   end
 
 
-  def find_finish(position, finish, list)
-    flag = false
-    first_finish_path = []
-    paths = 0
-    until list.size == paths do
-      [-2, -1, 1, 2].each do |row|
-        if (position.row + row).between?(0, 7)
-          [-2, -1, 1, 2].each do |col|
-            if (position.column + col).between?(0, 7) && row.abs != col.abs
-              moved_position = move(position, row, col)
-              list.append(list.head.value.dup.push(moved_position))
-              # p moved_position, list.to_s
-              if [moved_position.row, moved_position.column] == finish
-                unless flag
-                  flag = true
-                  first_finish_path = list.tail.value
-                  paths += 1
-                end
-                # p first_finish_path
-                break
-              end
-            end
-          end
+  def find_finish_paths(position, finish, list)
+    finish_paths = []
+
+    until list.size == finish_paths.size do
+      finish_paths = write_all_possible_paths(position, list, finish, finish_paths)
+
+      list.delete_at(0)
+      # clear all paths that potentialy can reach finsish for more moves
+      unless finish_paths.empty?
+        list = list.reject do |path|
+          path.length >= finish_paths.last.length && [path.last.row, path.last.column] != finish
         end
       end
-      list.remove_at(0)
-      unless first_finish_path == []
-        i = 0
-        until i == list.size
-          # p i, list.to_s
-          curr_list_node = list.at(i).value
-          if curr_list_node.length >= first_finish_path.length &&
-             [curr_list_node.last.row, curr_list_node.last.column] != finish
-            list.remove_at(i)
-          else
-            i += 1
-          end
-        end
-      end
-      position = list.head.value.last
-      flag = false
+      position = list.first.last
     end
     list
+  end
+
+  def write_all_possible_paths(position, list, finish, finish_paths)
+    [-2, -1, 1, 2].each do |row|
+      [-2, -1, 1, 2].each do |col|
+        # check if move valid -> in borders of table and 2+1 or 1+2
+        next unless (0..7).cover?(position.row + row) &&
+                    (0..7).cover?(position.column + col) &&
+                    row.abs != col.abs
+        # save new position in list of paths
+        moved_position = move(position, row, col)
+        list.push(list.first.dup.push(moved_position))
+        # check if move on finish square and save path to finish
+        if [moved_position.row, moved_position.column] == finish
+          finish_paths << list.last
+        end
+      end
+    end
+    finish_paths
   end
 
 end
